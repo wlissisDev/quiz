@@ -1,12 +1,10 @@
-import { Link, useSearchParams } from "react-router-dom";
 import { Answer } from "../../components/answer";
 
 import styles from './style.module.css';
 
 
 export function Quiz() {
-    const [searchParams] = useSearchParams();
-    const category = searchParams.get('category');
+
     return (
         <div className={styles.container}>
             <div className={styles.question}>
@@ -18,10 +16,10 @@ export function Quiz() {
 
             </div>
             <div className={styles.answers}>
-                <Answer/>
-                <Answer/>
-                <Answer/>
-                <Answer/>
+                <Answer item='A'/>
+                <Answer item='B'/>
+                <Answer item='C'/>
+                <Answer item='D'/>
             </div>
 
         </div>

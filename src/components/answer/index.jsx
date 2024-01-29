@@ -1,10 +1,29 @@
+import { Link, useSearchParams } from "react-router-dom";
+
 import styles from './style.module.css';
 
-export function Answer(){
-    return(
-        <div className={styles.answer}>
-            <span>A</span>
-            <p>Answer</p>
+export function Answer({ item }) {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const select = searchParams.get('select');
+    return (
+        <div
+            onClick={() => { setSearchParams({ 'select': item }); }}
+            className={styles.answer}
+            style={{
+                backgroundColor: select == item ? "aliceblue" : ""
+            }}
+        >
+            <span
+                style={{
+                    backgroundColor: select == item ? "rgb(57, 91, 120)" : "",
+                    color: select == item ? "aliceblue" : ""
+                }}
+            >A</span>
+            <p
+            style={{
+                color: select == item ? "rgb(57, 91, 120)" : ""
+            }}
+            >Answer</p>
         </div>
     )
 }

@@ -5,9 +5,7 @@ export function Home(){
     return(
         <div>
             <h1>home</h1>
-            <Link  to={`quiz?category=carros`}>Go Quiz Carros!</Link>
-            <Link  to={`quiz?category=comida`}>Go Quiz Comidas!</Link>
-            <Link  to={`quiz?category=futebol`}>Go Quiz Futebol!</Link>
+            <Link  to={`quiz?select=`}>Go Quiz!</Link>
         </div>
     )
 }
