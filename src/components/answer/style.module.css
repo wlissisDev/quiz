@@ -1,0 +1,24 @@
+.answer{
+    display: flex;
+    align-items: center;
+    background-color: rgb(57, 91, 120);
+    margin: 10px 0;
+    padding: 5px 20px;
+    font-size: 24px;
+    font-weight: 500;
+    border-radius: 5px;
+    min-height: 80px;
+}
+
+.answer span{
+    padding: 5px 10px;
+    background-color: aliceblue;
+    color: rgb(57, 91, 120);
+    font-weight: bold;
+    font-size: 24px;
+    border-radius: 5px;
+}
+
+.answer p{
+    margin-left: 10px;
+}

@@ -1,0 +1,37 @@
+.container {
+    display: grid;
+    grid-template-columns:  repeat(auto-fit,minmax(400px,1fr));
+}
+
+.question, .answers {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.question{
+    justify-content: space-around;
+}
+
+.question p{
+    font-size: 28px;
+}
+
+.answers {
+    justify-content: center;
+}
+
+.progress{
+    width: 100%;
+    border: 1px solid white;
+    padding: 4px;
+    border-radius: 10px;
+
+}
+.progress div{
+    height: 10px;
+    border-radius: 10px;
+    width: 20%;
+    background-color: blueviolet;
+}
