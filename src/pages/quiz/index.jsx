@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Context } from '../../contexts/ContextProvider'
 
 import { Answer } from "../../components/answer";
@@ -49,6 +49,9 @@ export function Quiz() {
 
     const { setPoint, point } = useContext(Context)
     const navigate = useNavigate();
+    const [searchParams, setUseSearchParams] = useSearchParams();
+
+    const selectedItem = searchParams.get('select');
 
     function next() {
         if (nextQuestion == 1) {
@@ -56,15 +59,17 @@ export function Quiz() {
             setNextQuestion(0);
         } else {
             setNextQuestion(nextQuestion + 1)
+            //reseta item selecionado
+            setUseSearchParams({ 'select': "" })
         }
     }
 
     function addPoint() {
         if (correctAnswer == true) {
             setPoint(point + 1);
-            console.log("voce acertou")
         }
     }
+    
     return (
         <div className={styles.container}>
             <div className={styles.question}>
@@ -100,10 +105,18 @@ export function Quiz() {
                     correct={data[nextQuestion].correct_answer.correct_d_answer}
                     setCorrectAnswer={setCorrectAnswer}
                 />
-                <button onClick={() => {
-                    next();
-                    addPoint();
-                }}>Confirmar</button>
+                <button
+                //desativa o botao se item nao tiver selecionado
+                    style={{
+                        pointerEvents:selectedItem==""? "none":"",
+                        opacity:selectedItem==""? ".3":""
+                    }}
+                    onClick={() => {
+                        next();
+                        addPoint();
+                        setCorrectAnswer(false);
+                        console.log(selectedItem)
+                    }}>Confirmar</button>
             </div>
 
         </div>

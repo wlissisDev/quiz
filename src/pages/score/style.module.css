@@ -1,6 +1,6 @@
 .container{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
 }
 
 .container div{
@@ -47,4 +47,11 @@
     font-weight: bold;
     text-align: center;
     margin-top: 10px;
+}
+
+@media (max-width:800px) {
+    .container div, .point {
+        min-height: 400px;
+        height: auto;
+    }
 }

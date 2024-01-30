@@ -48,3 +48,10 @@
     width: 20%;
     background-color: blueviolet;
 }
+
+@media (max-width:800px) {
+    .question, .answers {
+        min-height: 400px;
+        height: auto;
+    }
+}
