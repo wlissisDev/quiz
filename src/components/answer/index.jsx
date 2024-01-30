@@ -22,7 +22,7 @@ export function Answer({ item, content, correct, setCorrectAnswer }) {
                     backgroundColor: select == item ? "rgb(57, 91, 120)" : "",
                     color: select == item ? "aliceblue" : ""
                 }}
-            >A</span>
+            >{item}</span>
             <p
                 style={{
                     color: select == item ? "rgb(57, 91, 120)" : ""

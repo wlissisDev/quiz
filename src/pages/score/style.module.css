@@ -1,9 +1,9 @@
-.container{
+.container {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
-.container div{
+.container div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,20 +11,22 @@
     min-height: 100vh;
 }
 
-.container h1{
+.container h1 {
     font-style: italic;
     font-weight: 300;
     font-size: 70px;
 }
-.container h2{
+
+.container h2 {
     font-size: 40px;
 }
-.point{
+
+.point {
     display: flex;
     flex-direction: column;
 }
 
-.point span{
+.point span {
     width: 50%;
     height: 50%;
     background-color: rgba(78, 96, 127, 0.987);
@@ -36,7 +38,7 @@
 
 }
 
-.btn{
+.btn {
     width: 50%;
     padding: 25px;
     border-radius: 8px;
@@ -50,8 +52,16 @@
 }
 
 @media (max-width:800px) {
-    .container div, .point {
+
+    .container div,
+    .point {
         min-height: 400px;
         height: auto;
     }
+
+    .container h1,
+    h2 {
+        text-align: center;
+    }
+
 }

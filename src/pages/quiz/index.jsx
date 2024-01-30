@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Context } from '../../contexts/ContextProvider'
 
@@ -10,39 +10,9 @@ import styles from './style.module.css';
 
 export function Quiz() {
 
-    const data = [
-        {
-            question: 'Questao numero 1',
-            correct_answer: {
-                correct_a_answer: false,
-                correct_b_answer: true,
-                correct_c_answer: false,
-                correct_d_answer: false,
-            },
-            answer: {
-                answer_a: 'item a1',
-                answer_b: 'item b1',
-                answer_c: 'item c1',
-                answer_d: 'item d1',
-            }
-        },
-        {
-            question: 'Questao numero 2',
-            correct_answer: {
-                correct_a_answer: false,
-                correct_b_answer: false,
-                correct_c_answer: false,
-                correct_d_answer: true,
-            },
-            answer: {
-                answer_a: 'item a2',
-                answer_b: 'item b2',
-                answer_c: 'item c2',
-                answer_d: 'item d2',
-            }
-        },
+    const data = JSON.parse(localStorage.getItem('data'));
 
-    ]
+
 
     const [nextQuestion, setNextQuestion] = useState(0);
     const [correctAnswer, setCorrectAnswer] = useState(false);
@@ -54,7 +24,7 @@ export function Quiz() {
     const selectedItem = searchParams.get('select');
 
     function next() {
-        if (nextQuestion == 1) {
+        if (nextQuestion == 9) {
             navigate("/score")
             setNextQuestion(0);
         } else {
@@ -65,17 +35,18 @@ export function Quiz() {
     }
 
     function addPoint() {
-        if (correctAnswer == true) {
+        if (correctAnswer == "true") {
             setPoint(point + 1);
+            console.log("acertou")
         }
     }
-    
+
     return (
         <div className={styles.container}>
             <div className={styles.question}>
                 <div>
-                    <span>Questão 1 de 10</span>
-                    <p>Pergunta sobre qualquer coisa</p>
+                    <span>Questão {nextQuestion + 1} de 10</span>
+                    <p>{data[nextQuestion].question}</p>
                 </div>
                 <span className={styles.progress}><div></div></span>
 
@@ -83,39 +54,38 @@ export function Quiz() {
             <div className={styles.answers}>
                 <Answer
                     item='A'
-                    content={data[nextQuestion].answer.answer_a}
-                    correct={data[nextQuestion].correct_answer.correct_a_answer}
+                    content={data[nextQuestion].answers.answer_a}
+                    correct={data[nextQuestion].correct_answers.answer_a_correct}
                     setCorrectAnswer={setCorrectAnswer}
                 />
                 <Answer
                     item='B'
-                    content={data[nextQuestion].answer.answer_b}
-                    correct={data[nextQuestion].correct_answer.correct_b_answer}
+                    content={data[nextQuestion].answers.answer_b}
+                    correct={data[nextQuestion].correct_answers.answer_b_correct}
                     setCorrectAnswer={setCorrectAnswer}
                 />
                 <Answer
                     item='C'
-                    content={data[nextQuestion].answer.answer_c}
-                    correct={data[nextQuestion].correct_answer.correct_c_answer}
+                    content={data[nextQuestion].answers.answer_c}
+                    correct={data[nextQuestion].correct_answers.answer_c_correct}
                     setCorrectAnswer={setCorrectAnswer}
                 />
                 <Answer
                     item='D'
-                    content={data[nextQuestion].answer.answer_d}
-                    correct={data[nextQuestion].correct_answer.correct_d_answer}
+                    content={data[nextQuestion].answers.answer_d}
+                    correct={data[nextQuestion].correct_answers.answer_d_correct}
                     setCorrectAnswer={setCorrectAnswer}
                 />
                 <button
-                //desativa o botao se item nao tiver selecionado
+                    //desativa o botao se item nao tiver selecionado
                     style={{
-                        pointerEvents:selectedItem==""? "none":"",
-                        opacity:selectedItem==""? ".3":""
+                        pointerEvents: selectedItem == "" ? "none" : "",
+                        opacity: selectedItem == "" ? ".3" : ""
                     }}
                     onClick={() => {
                         next();
                         addPoint();
                         setCorrectAnswer(false);
-                        console.log(selectedItem)
                     }}>Confirmar</button>
             </div>
 
