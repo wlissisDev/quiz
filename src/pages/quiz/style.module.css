@@ -45,7 +45,6 @@
 .progress div{
     height: 10px;
     border-radius: 10px;
-    width: 20%;
     background-color: blueviolet;
 }
 

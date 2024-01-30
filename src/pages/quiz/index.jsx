@@ -48,7 +48,11 @@ export function Quiz() {
                     <span>Questão {nextQuestion + 1} de 10</span>
                     <p>{data[nextQuestion].question}</p>
                 </div>
-                <span className={styles.progress}><div></div></span>
+                <span className={styles.progress}>
+                    <div style={{
+                        width:`${nextQuestion}0%`
+                    }}></div>
+                </span>
 
             </div>
             <div className={styles.answers}>
