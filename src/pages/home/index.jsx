@@ -5,7 +5,7 @@ export function Home(){
     return(
         <div>
             <h1>home</h1>
-            <Link  to={`quiz?select=`}>Go Quiz!</Link>
+            <Link  to={`quiz?select=A`}>Go Quiz!</Link>
         </div>
     )
 }

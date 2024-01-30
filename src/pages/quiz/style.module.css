@@ -21,6 +21,19 @@
 .answers {
     justify-content: center;
 }
+.answers button{
+    padding: 24px;
+    font-size: 22px;
+    border-radius: 5px;
+    outline: none;
+    border:none;
+    margin-top: 10px;
+    background-color: blueviolet;
+}
+
+.answers button:hover{
+    background-color: rgb(159, 90, 222);
+}
 
 .progress{
     width: 100%;
